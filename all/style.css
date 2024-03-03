@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar {
+  overflow: hidden;
+  padding: 20px 30px;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.container {
+  background: linear-gradient(45deg, hwb(0 100% 0%), rgb(255, 255, 255));
+  padding: 15px 9%;
+  padding-bottom: 100px;
+}
+
+.container .heading {
+  text-align: center;
+  padding-bottom: 15px;
+  color: black;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  font-size: 50px;
+}
+
+.container .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 15px;
+}
+
+.container .box-container .box {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background: #fff;
+  text-align: left;
+  padding: 30px 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.container .box-container .box:hover {
+  scale: 1.05;
+}
+
+.container .box-container .box h3 {
+  color: black;
+  font-size: 22px;
+  padding: 10px 0;
+}
+
+.container .box-container .box h2,
+.container .box-container .box p {
+  color: #444;
+  font-size: 12px;
+  padding: 5px 0;
+}
+
+.container .box-container .box p.status-resolved {
+  color: #28a745; /* Green color for resolved status */
+}
+
+#load-more-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#load-more-btn {
+  outline: none;
+  border: none;
+  padding: 10px 30px;
+  background-color: #ff5100; /* Blue background */
+  color: #fff;
+  font-weight: 500;
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#load-more-btn:hover {
+  background-color: #b33300; /* Darker blue on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+  transform: translateY(-2px); /* Slightly raise the button */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}

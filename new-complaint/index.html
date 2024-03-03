@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Complaint</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+      }
+      .navbar {
+        overflow: hidden;
+        padding: 20px 30px;
+        background-color: #ffffff;
+        /* Example background color */
+      }
+
+      .navbar a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .admin-dashboard-link a {
+        float: right;
+      }
+      body {
+        background-color: white;
+      }
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+      .title {
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      .form-description {
+        margin-bottom: 20px;
+        color: #828282;
+        font-size: 14px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        font-weight: 600;
+        color: #828282;
+        margin-bottom: 5px;
+      }
+      input[type='text'],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #dfdfdf;
+        background-color: #f5f5f5;
+      }
+      ::placeholder {
+        color: #cbcbcb;
+      }
+      ::-ms-input-placeholder {
+        color: #cbcbcb;
+      }
+
+      input[type='submit'] {
+        width: 100%;
+        background-color: #f55800;
+        color: #fff;
+        border: none;
+        padding: 14px 20px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      input[type='submit']:hover {
+        background-color: #ff8c00;
+      }
+      .alert {
+        background-color: #ffcccc;
+        color: #cc0000;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      #map {
+        height: 180px;
+      }
+      #coordinates {
+        display: block;
+        margin-top: 6px;
+        color: #cbcbcb;
+        font-size: 14px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/public-complaints/">Home</a>
+      <a href="/public-complaints/all">All Complaints</a>
+      <a href="/public-complaints/map">Map</a>
+      <a href="#about">About</a>
+      <div class="admin-dashboard-link">
+        <a href="/public-complaints/admin/dashboard">Admin Dashboard</a>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="container">
+        <h1 class="title">Create a New Complaint</h1>
+        <form id="complaintForm" action="new-complaint.php" method="post">
+          <div class="form-group">
+            <!-- <p class="form-description">
+              Please provide as much detail as possible to ensure a swift and
+              effective response. Your input is valued as we strive to improve
+              our services for everyone.
+            </p> -->
+            <label for="title">Title</label>
+            <input
+              placeholder="Streelights not working."
+              type="text"
+              id="title"
+              name="title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              required
+              placeholder="The streetlights have been not working for the past 3 days and it's flickering."
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="area">Area</label>
+            <input
+              type="text"
+              id="area"
+              name="area"
+              placeholder="Hopefarm"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <div id="map"></div>
+            <input type="hidden" id="latitude" name="latitude" required />
+            <input type="hidden" id="longitude" name="longitude" required />
+            <span id="coordinates"></span>
+          </div>
+          <div class="form-group">
+            <label for="name">Complainant Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              required
+              placeholder="910X0X0X0X"
+            />
+          </div>
+          <input type="submit" value="Create Complaint" />
+        </form>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
